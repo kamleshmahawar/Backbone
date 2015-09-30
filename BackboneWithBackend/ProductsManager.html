@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Products Manager</title>
+	<style>
+	td{
+		padding : 5px;
+		border : 1px solid black;
+	}
+	table{
+		border-collapse: collapse;
+		
+	}
+	</style>
+	<script src="underscore.js"></script>
+	<script src="jquery.js"></script>
+	<script src="backbone.js"></script>
+	<script src="handlebars-v1.3.0.js"></script>
+	<script src="ProductModel.js"></script>
+	<script src="ProductView.js"></script>
+	<script src="ProductsCollection.js"></script>
+	<script src="ProductsCollectionView.js"></script>
+	<script id="productsListTemplate" type="text/x-handlerbars-template">
+		<input type="button" value="Load Products" id="btnLoadProducts">
+		<table>
+			
+		</table>
+		<div>
+			Total #: <span id="spanTotal"></span> 
+			
+		</div>
+		<div>
+			Discontinued #: <span id="spanDiscontinued"></span>
+		</div>
+	</script>
+	<script id="productTemplate" type="text/x-handlerbars-template">
+
+			<td>{{this.id}}</td>
+			<td>{{this.name}}</td>
+			<td>{{this.cost}}</td>
+			{{#if this.isDiscontinued}}
+				<td></td>
+			{{else}}
+				<td><input type="button" value="Discontinue" id="btnDiscontinue"></td>
+			{{/if}}
+			
+			
+	</script>
+	<script>
+		var products = new ProductsCollection();
+		var productsView = new ProductsCollectionView({
+			collection : products
+		});
+
+
+		$(function(){
+			productsView.render().$el.appendTo(document.body);
+		});
+
+	</script>
+</head>
+<body>
+	<h1>Products List</h1>
+	<hr>
+	
+</body>
+</html>

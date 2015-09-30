@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Backbone</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>User Manager</h1>
+		<hr>
+		<div class="page"></div>
+		<a href="#/new" class='btn btn-primary'>Create User</a>
+		<hr>
+		<form class="edit-user-form">
+			<legend>Create User</legend>
+			<label for="">userName</label>
+			<input type="text">
+			<label for="">Password</label>
+			<input type="text">
+			<hr>
+			<button class="btn">create</button>
+		</form>
+	</div>
+	
+	<script>
+      var Router = Backbone.Router.extend({
+      	routes : {
+      		'' : 'home',
+      		'new': 'editUser'
+      	}
+      });
+      var router = new Router();
+      router.on('route:home',function(){
+      	console.log("this is home page");
+      });
+      router.on('route:editUser',function(){
+      	console.log("create user");
+      });
+
+      Backbone.history.start();
+
+	</script>
+</body>
+</html>
